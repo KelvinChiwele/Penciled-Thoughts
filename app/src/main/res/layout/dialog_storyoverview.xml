@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context="com.techart.writersblock.stories.StoryPrologueActivity">
+
+     <Spinner
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/et_circular_background"/>
+
+    <EditText
+        android:id="@+id/editStoryTitle"
+        style="@style/ButtonEditor"
+        android:hint="@string/story_title"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/et_circular_background"
+        android:inputType="textCapWords" />
+
+    <EditText
+        android:id="@+id/editStoryDescription"
+        style="@style/ButtonEditor"
+        android:maxLines="5"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/et_circular_background"
+        android:hint="@string/story_prologue"
+        android:inputType="textCapSentences|textMultiLine" />
+</LinearLayout>

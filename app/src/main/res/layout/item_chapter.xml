@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="7dp">
+
+        <ImageView
+            android:id="@+id/ivFile"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:contentDescription="@string/file"
+            android:layout_alignParentStart="true"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_file_blue"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ivFile"
+            android:padding="5dp"
+            android:textColor="@color/colorText"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:visibility="gone"
+            android:gravity="end"
+            android:layout_alignEnd="@id/iv_delete"
+            android:contentDescription="@string/file"
+            android:layout_alignParentEnd="true"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_delete_white_24px" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

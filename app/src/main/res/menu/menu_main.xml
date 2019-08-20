@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.techart.writersblock.MainActivity">
+
+    <item
+        android:id="@+id/action_notifications"
+        android:icon="@drawable/ic_notifications_24px"
+        android:title="@string/action_notifications"
+        app:actionLayout="@layout/action_item"
+        app:showAsAction="always" />
+</menu>

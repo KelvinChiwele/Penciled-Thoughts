@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="7dp">
+
+    <TextView
+        android:id="@+id/tvAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/iv_sample"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/document_image"
+        app:srcCompat="@drawable/ic_camera_24px"
+        android:padding="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true" />
+
+    <TextView
+        android:id="@+id/tvComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@drawable/tv_circular_background"
+        android:textColor="@color/colorText"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="3dp">
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_view_replies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:visibility="gone"
+            android:padding="7dp"
+            android:layout_marginLeft="7dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvReply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reply"
+            android:layout_marginLeft="7dp"
+            android:padding="7dp"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

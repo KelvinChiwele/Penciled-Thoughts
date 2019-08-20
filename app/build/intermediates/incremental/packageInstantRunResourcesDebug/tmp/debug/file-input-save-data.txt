@@ -1,0 +1,11 @@
+#Internal package file, do not edit.
+#Tue Aug 20 10:02:05 EET 2019
+1.base=E\:\\BackUp\\4GB\\Penciled-Thoughts\\app\\build\\intermediates\\merged_assets\\debug\\out
+0.baseType=DIRECTORY
+1.baseType=DIRECTORY
+count=2
+1.set=ASSET
+0.path=crashlytics-build.properties
+0.set=ASSET
+0.base=E\:\\BackUp\\4GB\\Penciled-Thoughts\\app\\build\\intermediates\\merged_assets\\debug\\out
+1.path=fonts/time-new-roman.ttf

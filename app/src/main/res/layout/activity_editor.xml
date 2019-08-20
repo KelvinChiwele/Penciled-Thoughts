@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    tools:context="com.techart.writersblock.poems.PoemEditorActivity">
+
+    <EditText
+        android:id="@+id/editTitle"
+        android:inputType="textCapWords"
+        android:hint="@string/tap_to_write"
+        style="@style/ButtonEditor" />
+
+    <EditText
+        android:id="@+id/editText"
+        style="@style/ButtonEditor"
+        android:lineSpacingMultiplier="1.2"
+        android:hint="@string/tap_to_write"
+        android:background="@null"
+        android:inputType="textMultiLine|textCapSentences" />
+</LinearLayout>

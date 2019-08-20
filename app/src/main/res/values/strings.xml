@@ -1,0 +1,233 @@
+<resources>
+    <!-- <string name="app_name">Penciled Thoughts</string> -->
+    <string name="app_name">Penciled Thoughts</string>
+    <string name="poem_deleted">Poem deleted</string>
+    <string name="poem_updated">Poem updated</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="categories">
+        <item>@string/default_category</item>
+        <item>Action</item>
+        <item>Adventure</item>
+        <item>Comedy</item>
+        <item>Drama</item>
+        <item>Fiction</item>
+        <item>Folklore</item>
+        <item>Horror</item>
+        <item>Mystery</item>
+        <item>Romance</item>
+        <item>Romantic Comedy</item>
+        <item>Sci-Fi</item>
+        <item>Thriller</item>
+        <item>Tragedy</item>
+        <item>Zambian</item>
+    </string-array>
+    <string name="default_category">Select Category</string>
+
+    <!--activity login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+
+    <!--bottom menu -->
+    <string name="item_home">Home</string>
+    <string name="item_search">Search</string>
+    <string name="item_library">Library</string>
+    <string name="item_reading">Go to Reading List</string>
+    <string name="log_out">Log Out</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="devotion_deleted">Devotion Deleted</string>
+
+    <!--activity register -->
+    <string name="repeat_password">Repeat Password</string>
+    <string name="prompt_username">User Name</string>
+    <string name="help"><![CDATA[<b>How to create a post</b>
+        <ol>
+            <li>Press the create button</li>
+            <li>On a dialog box select either <i>Devotion</i>, <i>Poems</i>  or <i>Stories</i> </li>
+            <li>Follow the instructions in the editor</li>
+        </ol>
+
+        <p>
+        <b>How to upload to post</b>
+        <ol>
+            <li>If in the editor press the <i>POST</i> button in the appbar, else</li>
+            <li>Press account > select <i>Devotion</i>, <i>Poems</i>  or <i>Stories</i> </li>
+            <li>Select appropriate item</li>
+            <li>Press <i>POST</i></li>
+        </ol>
+        </p>
+
+        <p>
+        <b>How to delete from My Block</b>
+        <ol>
+            <li>If in the editor press the <i>menu icon</i> in the appbar and then <i>delete</i>, else</li>
+            <li>Press account > select <i>Devotion</i>, <i>Poems</i>  or <i>Stories</i> </li>
+            <li>Select appropriate item</li>
+            <li>Press <i>delete</i></li>
+        </ol>
+        </p>
+        <b>How to delete Posted items</b>
+        <ol>
+            <li>If in the editor press the <i>menu icon</i> in the appbar and then <i>delete</i>, else</li>
+            <li>Press account > select <i>Devotion</i>, <i>Poems</i>  or <i>Stories</i> from the posted section </li>
+            <li>Select appropriate item</li>
+            <li>Press the <i>delete</i> icon</li>
+        </ol>
+        </p>
+
+        <p>
+        <b>How to update post from My Block</b>
+        <ol>
+            <li>If in the editor press the <i>POST</i> button in the appbar and follow instructions else</li>
+            <li>Press account > select <i>Devotion</i>, <i>Poems</i>  or <i>Stories</i> </li>
+            <li>Select appropriate item</li>
+            <li>Repeat 1</li>
+        </ol>
+        </p>
+
+        <p>
+        <b>How to update Stories from Posted</b>
+        <ol>
+            <li>If in the editor press the <i>POST</i> button in the appbar and follow instructions else</li>
+            <li>Press account > select <i>Stories</i> </li>
+            <li>Select appropriate story</li>
+            <li>Press button 1 to change category</li>
+            <li>Press button 2 to change story status</li>
+            <li>Press button 3 and to either</li>
+            <ol>
+                <li>Add Chapter</li>
+                <li>Edit Chapter</li>
+                <li>Edit Description</li>
+                <li>Edit Title</li>
+            </ol>
+        </ol>
+        </p>
+]]>
+    </string>
+    <string name="log_help">How to</string>
+    <string name="chapter_updated">Chapter Updated</string>
+    <string name="chapter_posted">Chapter Posted</string>
+    <string name="chapter_deleted">Chapter Deleted</string>
+    <string name="story_deleted">Story Deleted</string>
+    <string name="delete_all">Delete all</string>
+
+    <string name="aim">Thoughts worth Sharing</string>
+    <string name="reader">Reader</string>
+    <string name="writer">Writer</string>
+    <string name="log_in">Log in</string>
+    <string name="logo_content_desc">Logo for Penciled Thoughts</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="post">POST</string>
+    <string name="delete">delete</string>
+    <string name="update">UPDATE</string>
+    <string name="next">Next</string>
+    <string name="photo">Photo</string>
+    <string name="add_post">Add Post</string>
+    <string name="liked">%1$s liked %2$s</string>
+    <string name="post_category">%1$s  *  </string>
+    <string name="post_status">%1$s  *  </string>
+    <string name="reading_progess">Read %1$s out of %2$d</string>
+    <string name="post_chapters">%1$s</string>
+    <string name="replies">%1$s</string>
+    <string name="post_author">%1$s</string>
+    <string name="article_author">%1$s</string>
+    <string name="viewers">%1$s views</string>
+    <string name="tap_to_write">Tap to start writing</string>
+    <string name="delete_icon">Delete Icon</string>
+    <string name="edit_devotion">Edit Devotion</string>
+    <string name="edit_poem">Edit Poem</string>
+    <string name="like_button">Like button</string>
+    <string name="initial_count">0</string>
+    <string name="comment_icon">Comment icon</string>
+    <string name="view_icon">View icon</string>
+    <string name="just_now">just now</string>
+    <string name="episode">Chapter:</string>
+    <string name="document_image">Document image</string>
+    <string name="story_prologue">Prologue (optional)</string>
+    <string name="story_title">Story Title</string>
+    <string name="background_image">background image</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="set_photo">Set DP</string>
+    <string name="my_block">My Block</string>
+    <string name="_poems">Poems</string>
+    <string name="chevron">chevron</string>
+    <string name="devotions">Devotions</string>
+    <string name="posted">Posted</string>
+    <string name="tvstories">Stories</string>
+    <string name="complete">Complete</string>
+    <string name="ongoing">Ongoing</string>
+    <string name="edit_chapters">Edit Chapters</string>
+    <string name="stories">Stories</string>
+    <string name="type_comment">Type comment...</string>
+    <string name="send_icon">send icon</string>
+    <string name="edit_description">Edit Description</string>
+    <string name="cancel">Cancel</string>
+
+    <!--InformationActivity -->
+    <string name="pref_header_about">About</string>
+    <string name="outdated">NEW UPDATE AVAILABLE</string>
+    <string name="urgent">They are major changes that require an instant update</string>
+    <string name="update_reason">Kindly press UPDATE to get newest specification</string>
+
+
+
+    <string name="choose_email_client">Choose email client</string>
+
+    <string name="summary_about">Penciled Thoughts initially called Writers\' Block is a non-profit making and free
+        Android Application meant to help talented writers in Zambia and all over the world by not only providing a platform that organizes Stories, Poems and Devotion in
+        a manner that is easy to follow, but also extending the reach to not only people on facebook and whatsApp groups that writers in Zambia
+        have formed but to people who are not on their friend or contact lists as well.
+
+   </string>
+    <string name="privacy">Penciled Thoughts cares about your Privacy. Any personal information (name, phone number,
+        email) or any data that you choose to share with us, like uploading a picture on our app, will
+        securely be stored in the app server. This information may/will be used by Penciled Thoughts,
+        its affiliates, partners and selected third parties in order to provide you with the best service. By using this
+        Application, you agree to the terms and conditions.</string>
+    <string name="app_version">Version %1$s</string>
+    <string name="title_developer">Developer</string>
+    <string name="summary_developer">Know more about the Developer</string>
+    <string name="summary_writers">List of writers</string>
+    <string name="summary_readers">List of Readers</string>
+
+    <string name="url_developer">https://www.facebook.com/TechArtZambia/</string>
+    <string name="no_notices">There are no new notifications</string>
+
+    <string name="title_version">Version</string>
+    <string name="key_app_version">key_app_version</string>
+    <string name="title_help">Help</string>
+    <string name="summary_help">Steps to creating, modifying and deleting posts</string>
+    <string name="title_writers">Writers</string>
+    <string name="title_readers">Readers</string>
+    <string name="about">About</string>
+    <string name="number_placeholder">#</string>
+    <string name="default_key">default</string>
+    <string name="search_title">Search by %1$s title</string>
+    <string name="remove">Remove</string>
+    <string name="file">File</string>
+    <string name="book">Book</string>
+    <string name="story_cover">Story cover</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="reset">Reset</string>
+    <string name="share">Share</string>
+    <string name="no_comments">No comments yet, be the first</string>
+    <string name="reply">Reply</string>
+    <string name="no_replies_yet">No replies yet</string>
+    <string name="view">VIEW</string>
+    <string name="set">SET</string>
+    <string name="last_insert">Last insert ~</string>
+    <string name="chat" />
+    <string name="item_notifications">Notifications</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="join_us">Join Us</string>
+    <string name="share_app">Share App</string>
+    <string name="biography">Bio</string>
+    <string name="linked_in">Linked In</string>
+    <string name="facebook">Facebook</string>
+    <string name="add_biography">Tap to add biography</string>
+    <string name="add_facebook_url">Tap to add link to facebook page</string>
+    <string name="type_in_the_email">Type in the email</string>
+    <string name="type_email_you_registered_with">Type email you registered with</string>
+    <string name="send_mail">Send Mail</string>
+</resources>

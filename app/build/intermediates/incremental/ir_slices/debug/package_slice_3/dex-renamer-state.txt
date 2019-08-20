@@ -1,0 +1,4 @@
+#Tue Aug 20 10:02:08 EET 2019
+base.0=E\:\\BackUp\\4GB\\Penciled-Thoughts\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\3
+path.0=classes.dex
+renamed.0=classes.dex
