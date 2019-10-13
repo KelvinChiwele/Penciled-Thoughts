@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -60,6 +62,10 @@ public class LoginActivity extends AppCompatActivity {
         TextView tvReset = findViewById(R.id.tv_reset);
         Button mLogin = findViewById(R.id.btLogin);
         Button mRegister = findViewById(R.id.btSignUp);
+        ImageView logo = findViewById(R.id.logo);
+        Glide.with(LoginActivity.this)
+                .load(R.drawable.logo)
+                .into(logo);
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
