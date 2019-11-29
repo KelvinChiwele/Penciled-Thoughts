@@ -26,6 +26,7 @@ public class PasswordResetDialog extends AppCompatActivity {
 
     private EditText etDialogEditor;
     String newText;
+    private boolean isAttached;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,6 @@ public class PasswordResetDialog extends AppCompatActivity {
                 }
             }
         });
-
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,26 +67,40 @@ public class PasswordResetDialog extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        isAttached = true;
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        isAttached = false;
+    }
+
 
 
     public void onSent() {
-        DialogInterface.OnClickListener dialogClickListener =
-            new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int button) {
-                    if (button == DialogInterface.BUTTON_POSITIVE) {
-                        finish();
-                    }
-                    if (button == DialogInterface.BUTTON_NEGATIVE){
-                        dialog.dismiss();
-                    }
-                }
-            };
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Sent to "+ newText)
-                .setMessage("Go to mail to reset password")
-                .setPositiveButton("OK", dialogClickListener)
-                .setNegativeButton("Cancel", dialogClickListener)
-                .show();
+        if (isAttached) {
+            DialogInterface.OnClickListener dialogClickListener =
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int button) {
+                            if (button == DialogInterface.BUTTON_POSITIVE) {
+                                finish();
+                            }
+                            if (button == DialogInterface.BUTTON_NEGATIVE) {
+                                dialog.dismiss();
+                            }
+                        }
+                    };
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Sent to " + newText)
+                    .setMessage("Go to mail to reset password")
+                    .setPositiveButton("OK", dialogClickListener)
+                    .setNegativeButton("Cancel", dialogClickListener)
+                    .show();
+        }
     }
 }

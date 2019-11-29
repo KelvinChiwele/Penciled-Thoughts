@@ -63,6 +63,7 @@ public class AuthorsProfileActivity extends AppCompatActivity
         tvOverlayBiography = findViewById(R.id.tv_biography);
         tvIndependentBiography = findViewById(R.id.tv_bio);
 
+
         // ibProfile = (ImageView)findViewById(R.id.ibProfile);
         postedPoems.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +124,9 @@ public class AuthorsProfileActivity extends AppCompatActivity
                         currentPhotoUrl = users.getImageUrl();
                         setPicture(currentPhotoUrl);
                     } else {
+                        Glide.with(AuthorsProfileActivity.this)
+                                .load(R.drawable.logo)
+                                .into(imProfilePicture);
                         Toast.makeText(getBaseContext(),"No image found",Toast.LENGTH_LONG).show();
                     }
                     tvOverlayBiography.setVisibility(View.GONE);

@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/like_button"
-                    android:padding="7dp"
+                    android:padding="4dp"
                     app:srcCompat="@drawable/ic_thumb_up_grey_24dp" />
 
                 <TextView
@@ -83,13 +83,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="7dp"
-                    android:layout_marginLeft="7dp"
                     android:paddingBottom="7dp"
                     android:paddingTop="7dp"
-                    android:paddingRight="7dp"
-                    android:paddingEnd="7dp"
                     android:text="@string/initial_count"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
 
@@ -107,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/comment_icon"
                     android:background="@android:color/transparent"
-                    android:padding="7dp"
+                    android:padding="4dp"
                     app:srcCompat="@drawable/ic_comment_grey_24px" />
                 <TextView
                     android:id="@+id/tv_comments"
@@ -116,7 +113,7 @@
                     android:layout_marginRight="7dp"
                     android:layout_marginEnd="7dp"
                     android:text="@string/initial_count"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -133,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/view_icon"
                     android:background="@android:color/transparent"
-                    android:padding="7dp"
+                    android:padding="4dp"
                     app:srcCompat="@drawable/ic_visibility_grey_24px" />
                 <TextView
                     android:id="@+id/tv_numviews"
@@ -142,7 +139,7 @@
                     android:layout_marginRight="7dp"
                     android:layout_marginEnd="7dp"
                     android:text="@string/initial_count"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
 
