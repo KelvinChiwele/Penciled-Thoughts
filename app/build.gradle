@@ -6,8 +6,8 @@ android {
         applicationId "com.techart.writersblock"
         minSdkVersion 18
         targetSdkVersion 29
-        versionCode 20
-        versionName "2.0.9"
+        versionCode 21
+        versionName "3.1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -29,6 +29,10 @@ android {
     }
     productFlavors {
 
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 }
 
