@@ -154,7 +154,7 @@ public class Tab1Stories extends Fragment {
                         mProcessLike = true;
                         FireBaseUtils.mDatabaseLike.child(post_key).addValueEventListener(new ValueEventListener() {
                             @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 if (mProcessLike) {
                                     if (dataSnapshot.hasChild(FireBaseUtils.getUiD())) {
                                         FireBaseUtils.mDatabaseLike.child(post_key).child(FireBaseUtils.getUiD()).removeValue();
@@ -168,7 +168,7 @@ public class Tab1Stories extends Fragment {
                                 }
                             }
                             @Override
-                            public void onCancelled(DatabaseError databaseError) {
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
                             }
                         });
                     }
@@ -208,7 +208,6 @@ public class Tab1Stories extends Fragment {
         mStoryList.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.notifyDataSetChanged();
     }
-
 
     private void addToViews(final String description, final String post_key, final Story model) {
         mProcessView = true;
@@ -280,7 +279,7 @@ public class Tab1Stories extends Fragment {
     private void addToLibrary(final Story model, final String post_key) {
         FireBaseUtils.mDatabaseLibrary.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.child(FireBaseUtils.getUiD()).hasChild(post_key)) {
                     Map<String,Object> values = new HashMap<>();
                     values.put(Constants.POST_KEY,  post_key);
@@ -292,7 +291,7 @@ public class Tab1Stories extends Fragment {
                 }
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

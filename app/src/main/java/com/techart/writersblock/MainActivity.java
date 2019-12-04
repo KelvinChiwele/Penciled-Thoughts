@@ -699,7 +699,7 @@ public class MainActivity extends AppCompatActivity
             .load(ivImage)
             .into(new SimpleTarget<Drawable>() {
                 @Override
-                public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                public void onResourceReady(@NonNull Drawable resource, Transition<? super Drawable> transition) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         linearLayout.setBackground(resource);
                     }
