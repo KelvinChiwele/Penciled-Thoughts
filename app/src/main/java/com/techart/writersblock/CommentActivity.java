@@ -339,17 +339,21 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void deleteMessage() {
-        FireBaseUtils.mDatabaseWritersChat.child(postKey).child(commentKey).removeValue();
-        Toast.makeText(this, "Message deleted", Toast.LENGTH_LONG).show();
+        if (commentKey != null) {
+            FireBaseUtils.mDatabaseWritersChat.child(postKey).child(commentKey).removeValue();
+            Toast.makeText(this, "Message deleted", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void editMessage() {
-        final String comment = mEtComment.getText().toString().trim();
-        Map<String, Object> values = new HashMap<>();
-        values.put(Constants.COMMENT_TEXT, comment);
-        FireBaseUtils.mDatabaseWritersChat.child(postKey).child(commentKey).updateChildren(values);
-        mEtComment.setText("");
-        Toast.makeText(this, "Message updated", Toast.LENGTH_LONG).show();
+        if (commentKey != null) {
+            final String comment = mEtComment.getText().toString().trim();
+            Map<String, Object> values = new HashMap<>();
+            values.put(Constants.COMMENT_TEXT, comment);
+            FireBaseUtils.mDatabaseWritersChat.child(postKey).child(commentKey).updateChildren(values);
+            mEtComment.setText("");
+            Toast.makeText(this, "Message updated", Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -370,7 +374,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     private void poemCommentCount() {
         FireBaseUtils.mDatabasePoems.child(postKey).runTransaction(new Transaction.Handler() {
             @Override
-            public Transaction.Result doTransaction(MutableData mutableData) {
+            public Transaction.Result doTransaction(@NonNull MutableData mutableData) {
                 Poem poem = mutableData.getValue(Poem.class);
                 if (poem == null) {
                     return Transaction.success(mutableData);
@@ -391,7 +395,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     private void devotionCommentCount() {
         FireBaseUtils.mDatabaseDevotions.child(postKey).runTransaction(new Transaction.Handler() {
             @Override
-            public Transaction.Result doTransaction(MutableData mutableData) {
+            public Transaction.Result doTransaction(@NonNull MutableData mutableData) {
                 Devotion devotion = mutableData.getValue(Devotion.class);
                 if (devotion == null) {
                     return Transaction.success(mutableData);
@@ -411,7 +415,7 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
     private void storyCommentCount() {
         FireBaseUtils.mDatabaseStory.child(postKey).runTransaction(new Transaction.Handler() {
             @Override
-            public Transaction.Result doTransaction(MutableData mutableData) {
+            public Transaction.Result doTransaction(@NonNull MutableData mutableData) {
                 Story story = mutableData.getValue(Story.class);
                 if (story == null) {
                     return Transaction.success(mutableData);
