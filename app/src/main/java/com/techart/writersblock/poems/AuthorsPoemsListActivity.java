@@ -16,8 +16,6 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.techart.writersblock.CommentActivity;
 import com.techart.writersblock.LikesActivity;
@@ -36,8 +34,6 @@ import java.util.Date;
 
 public class AuthorsPoemsListActivity extends AppCompatActivity {
     private RecyclerView mPoemList;
-    private DatabaseReference mDatabasePoems;
-    private DatabaseReference mDatabaseLike;
     private String author;
     private String postTitle;
     private String postContent;
@@ -54,10 +50,8 @@ public class AuthorsPoemsListActivity extends AppCompatActivity {
 
         author = getIntent().getStringExtra("author");
         setTitle(author + "'s poems");
-        mDatabasePoems = FireBaseUtils.mDatabasePoems;
-        mDatabaseLike = FireBaseUtils.mDatabaseLike;
-        mDatabaseLike.keepSynced(true);
-        mDatabasePoems.keepSynced(true);
+        FireBaseUtils.mDatabaseLike.keepSynced(true);
+        FireBaseUtils.mDatabasePoems.keepSynced(true);
         progressBar = findViewById(R.id.pb_loading);
         mPoemList = findViewById(R.id.poem_list);
         mPoemList.setHasFixedSize(true);
@@ -74,113 +68,9 @@ public class AuthorsPoemsListActivity extends AppCompatActivity {
         firebaseRecyclerAdapter.startListening();
     }
 
-    /*
-    private void bindView()
-    {
-        Query query = mDatabasePoems.orderByChild(Constants.POST_AUTHOR).equalTo(author);
-        FirebaseRecyclerAdapter<Poem,ArticleViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Poem, ArticleViewHolder>(
-                Poem.class,R.layout.item_article,ArticleViewHolder.class, query)
-        {
-            @Override
-            protected void populateViewHolder(ArticleViewHolder viewHolder, final Poem model, int position) {
-                final String post_key = getRef(position).getKey();
-                viewHolder.post_title.setText(model.getTitle());
-                progressBar.setVisibility(View.GONE);
-                viewHolder.post_author.setText(getString(R.string.article_author,model.getAuthor()));
-                viewHolder.setIvImage(AuthorsPoemsListActivity.this, ImageUtils.getPoemUrl());
-                if (model.getNumLikes() != null)
-                {
-                    String count = NumberUtils.shortenDigit(model.getNumLikes());
-                    viewHolder.numLikes.setText(count);
-                }
-                if (model.getNumComments() != null)
-                {
-                    String count = NumberUtils.shortenDigit(model.getNumComments());
-                    viewHolder.numComments.setText(count);
-                }
-                if (model.getNumViews() != null)
-                {
-                    String count = NumberUtils.shortenDigit(model.getNumViews());
-                    viewHolder.tvNumViews.setText(getString(R.string.viewers,count));
-                }
-                if (model.getTimeCreated() != null)
-                {
-                    String time = TimeUtils.timeElapsed(currentTime() - model.getTimeCreated());
-                    viewHolder.timeTextView.setText(time);
-                }
-
-                viewHolder.setLikeBtn(post_key);
-                postContent = model.getPoemText();
-                postTitle = model.getTitle();
-
-                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent readPoemIntent = new Intent(AuthorsPoemsListActivity.this,ScrollingActivity.class);
-                        readPoemIntent.putExtra(Constants.POST_CONTENT, postContent);
-                        readPoemIntent.putExtra(Constants.POST_TITLE, postTitle);
-                        startActivity(readPoemIntent);
-                    }
-                });
-
-                viewHolder.btnLiked.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mProcessLike = true;
-                        mDatabaseLike.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                if (mProcessLike) {
-                                    if (dataSnapshot.child(post_key).hasChild(Constants.AUTHOR_URL)) {
-                                        mDatabaseLike.child(post_key).child(FireBaseUtils.getUiD()).removeValue();
-                                        FireBaseUtils.onPoemDisliked(post_key);
-                                        mProcessLike = false;
-                                    } else {
-                                        FireBaseUtils.addPoemLike(model, post_key);
-                                        mProcessLike = false;
-                                        FireBaseUtils.onPoemLiked(post_key);
-                                    }
-                                }
-                            }
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-                    }
-                });
-
-                viewHolder.numLikes.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent likedPostsIntent = new Intent(AuthorsPoemsListActivity.this,LikesActivity.class);
-                        likedPostsIntent.putExtra(Constants.POST_KEY,post_key);
-                        startActivity(likedPostsIntent);
-                    }
-                });
-                viewHolder.btnComment.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent commentIntent = new Intent(AuthorsPoemsListActivity.this,CommentActivity.class);
-                        commentIntent.putExtra(Constants.POST_KEY,post_key);
-                        commentIntent.putExtra(Constants.POST_TITLE,model.getTitle());
-                        commentIntent.putExtra(Constants.POST_TYPE,Constants.POEM_HOLDER);
-
-                        startActivity(commentIntent);
-                    }
-                });
-            }
-        };
-
-        mPoemList.setAdapter(firebaseRecyclerAdapter);
-        firebaseRecyclerAdapter.notifyDataSetChanged();
-    }*/
-
     private void bindView() {
-        Query query = mDatabasePoems.orderByChild(Constants.POST_AUTHOR).equalTo(author);
         FirebaseRecyclerOptions<Poem> response = new FirebaseRecyclerOptions.Builder<Poem>()
-                                                         .setQuery(query, Poem.class)
+                .setQuery(FireBaseUtils.mDatabasePoems.orderByChild(Constants.POST_AUTHOR).equalTo(author), Poem.class)
                                                          .build();
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Poem, ArticleViewHolder>(response) {
             @NonNull
@@ -237,13 +127,13 @@ public class AuthorsPoemsListActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         mProcessLike = true;
-                        mDatabaseLike.addValueEventListener(new ValueEventListener() {
+                        FireBaseUtils.mDatabaseLike.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
 
                                 if (mProcessLike) {
                                     if (dataSnapshot.child(post_key).hasChild(Constants.AUTHOR_URL)) {
-                                        mDatabaseLike.child(post_key).child(FireBaseUtils.getUiD()).removeValue();
+                                        FireBaseUtils.mDatabaseLike.child(post_key).child(FireBaseUtils.getUiD()).removeValue();
                                         FireBaseUtils.onPoemDisliked(post_key);
                                         mProcessLike = false;
                                     } else {

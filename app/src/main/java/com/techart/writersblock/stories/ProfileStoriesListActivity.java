@@ -63,7 +63,6 @@ import static com.techart.writersblock.utils.ImageUtils.hasPermissions;
 
 public class ProfileStoriesListActivity extends AppCompatActivity {
     private RecyclerView mPoemList;
-    private DatabaseReference mDatabaseStory;
     private AlertDialog updateDialog;
     private static final int GALLERY_REQUEST = 1;
     private int PERMISSION_ALL = 1;
@@ -80,10 +79,9 @@ public class ProfileStoriesListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tabrecyclerviewer);
         setTitle("Stories");
-        mDatabaseStory = FireBaseUtils.mDatabaseStory;
         DatabaseReference mDatabaseLike = FireBaseUtils.mDatabaseLike;
         mDatabaseLike.keepSynced(true);
-        mDatabaseStory.keepSynced(true);
+        FireBaseUtils.mDatabaseStory.keepSynced(true);
         mPoemList = findViewById(R.id.poem_list);
         mPoemList.setHasFixedSize(true);
         progressBar = findViewById(R.id.pb_loading);
@@ -124,103 +122,9 @@ public class ProfileStoriesListActivity extends AppCompatActivity {
         Toast.makeText(this,"Story marked as " + ((ToggleButton) view).getText(),Toast.LENGTH_LONG).show();
     }
 
-    /*
-    private void bindView() {
-        Query query = mDatabaseStory.orderByChild(Constants.POST_AUTHOR).equalTo(FireBaseUtils.getAuthor());
-        FirebaseRecyclerAdapter<Story,StoryViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Story, StoryViewHolder>(
-                Story.class,R.layout.item_storyrow_del,StoryViewHolder.class, query) {
-            @Override
-            protected void populateViewHolder(final StoryViewHolder viewHolder, final Story model, int position) {
-                final String post_key = getRef(position).getKey();
-                progressBar.setVisibility(View.GONE);
-                viewHolder.tvTitle.setText(model.getTitle());
-                viewHolder.tvCategory.setText(model.getCategory());
-                viewHolder.tbStatus.setChecked(model.getStatus().equals("Complete"));
-                viewHolder.tbStatus.setTextColor(setColor(model.getStatus().equals("Complete")));
-
-                if (model.getImageUrl() != null) {
-                    viewHolder.setIvImage(ProfileStoriesListActivity.this,model.getImageUrl());
-                } else {
-                    viewHolder.setIvImage(ProfileStoriesListActivity.this, ImageUtils.getStoryUrl(model.getCategory().trim()));
-                }
-
-                viewHolder.tvCategory.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        updateStoryDialog(post_key, model.getCategory().trim());
-                    }
-                });
-
-                viewHolder.btCover.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            onGetPermission();
-                        }  else {
-                            Intent imageIntent = new Intent();
-                            imageIntent.setType("image/*");
-                            imageIntent.setAction(Intent.ACTION_GET_CONTENT);
-                            startActivityForResult(imageIntent,GALLERY_REQUEST);
-                        }
-                    }
-                });
-
-                viewHolder.tvSetCover.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        setPhoto(post_key,model.getImageUrl(), model.getTitle());
-                    }
-                });
-
-                viewHolder.tvView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (uriFromPath != null) {
-                            viewHolder.setIvImage(ProfileStoriesListActivity.this,uriFromPath);
-                        } else {
-                            Toast.makeText(ProfileStoriesListActivity.this,"Tap on image to upload new image",Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
-                viewHolder.tbStatus.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onToggleButtonClicked(v,post_key);
-                    }
-                });
-                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                    }
-                });
-
-                viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                    deleteCaution(post_key);
-                    }
-                });
-
-                viewHolder.btEdit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent likedPostsIntent = new Intent(ProfileStoriesListActivity.this,StoryDialogActivity.class);
-                        likedPostsIntent.putExtra(Constants.POST_KEY,post_key);
-                        likedPostsIntent.putExtra(Constants.CHAPTER_TITLE, model.getChapters());
-                        likedPostsIntent.putExtra(Constants.STORY_CHAPTERCOUNT,model.getChapters().toString());
-                        startActivity(likedPostsIntent);
-                    }
-                });
-            }
-        };
-        mPoemList.setAdapter(firebaseRecyclerAdapter);
-        firebaseRecyclerAdapter.notifyDataSetChanged();
-    }*/
-
     private void bindView() {
         FirebaseRecyclerOptions<Story> response = new FirebaseRecyclerOptions.Builder<Story>()
-                                                          .setQuery(mDatabaseStory.orderByChild(Constants.POST_AUTHOR).equalTo(FireBaseUtils.getAuthor()), Story.class)
+                .setQuery(FireBaseUtils.mDatabaseStory.orderByChild(Constants.AUTHOR_URL).equalTo(FireBaseUtils.getUiD()), Story.class)
                                                           .build();
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Story, StoryViewHolder>(response) {
             @NonNull

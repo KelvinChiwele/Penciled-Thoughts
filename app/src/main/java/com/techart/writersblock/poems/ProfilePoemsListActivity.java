@@ -182,7 +182,7 @@ public class ProfilePoemsListActivity extends AppCompatActivity {
 
     private void bindView() {
         FirebaseRecyclerOptions<Poem> response = new FirebaseRecyclerOptions.Builder<Poem>()
-                                                         .setQuery(FireBaseUtils.mDatabasePoems, Poem.class)
+                .setQuery(FireBaseUtils.mDatabasePoems.orderByChild(Constants.AUTHOR_URL).equalTo(FireBaseUtils.getUiD()), Poem.class)
                                                          .build();
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Poem, ArticleEditViewHolder>(response) {
             @NonNull

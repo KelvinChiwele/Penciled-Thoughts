@@ -134,7 +134,7 @@ public class AuthorsProfileActivity extends AppCompatActivity
 
                     if (users != null && users.getFacebook() == null && FireBaseUtils.getUiD().equals(authorUrl)) {
                         tvFaceBook.setText(R.string.add_facebook_url);
-                    } else if (users.getFacebook() == null){
+                    } else if (users != null && users.getFacebook() == null) {
                         tvFaceBook.setVisibility(View.GONE);
                     } else {
                         facebook = users.getFacebook();

@@ -114,11 +114,13 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
         } else {
             tvEmpty.setVisibility(View.GONE);
         }
-        init();
         initCommentSection();
     }
 
     private void initCommentSection() {
+        mEtComment = findViewById(R.id.et_comment);
+        findViewById(R.id.iv_send).setOnClickListener(this);
+
         Query commentsQuery = FireBaseUtils.mDatabaseComment.child(postKey).orderByChild(Constants.TIME_CREATED);
         FirebaseRecyclerOptions<Comment> response = new FirebaseRecyclerOptions.Builder<Comment>()
                                                             .setQuery(commentsQuery, Comment.class)
@@ -240,10 +242,6 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void init() {
-        mEtComment = findViewById(R.id.et_comment);
-        findViewById(R.id.iv_send).setOnClickListener(this);
-    }
 
     @Override
     public void onClick(View v) {
